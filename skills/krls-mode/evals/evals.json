@@ -1,0 +1,38 @@
+{
+    "skill": "krls-mode",
+    "evals": [
+        {
+            "id": "nueva-sesion-sin-verify-android",
+            "setup": "proyecto sin verify",
+            "query": "Añade un texto que diga hola",
+            "expected_behavior": [
+                "Selecciona el playbook create-local-skill-verify",
+                "Comienza el proceso de crear la skill local verify",
+                "Propone ejecución, vista e interacción basados en android",
+                "Crea la skill local en la carpeta skills"
+            ]
+        },
+        {
+            "id": "nueva-sesion-sin-verify-html",
+            "setup": "proyecto sin verify",
+            "query": "Añade un texto que diga hola",
+            "expected_behavior": [
+                "Selecciona el playbook create-local-skill-verify",
+                "Comienza el proceso de crear la skill local verify",
+                "Propone ejecución, vista e interacción basados en html",
+                "Crea la skill local en la carpeta skills"
+            ]
+        },
+        {
+            "id": "nueva-sesion-sin-skill-git",
+            "setup": "proyecto sin skill git",
+            "query": "Añade un texto que diga hola",
+            "expected_behavior": [
+                "Selecciona el playbook create-local-skill-git",
+                "Comienza el proceso de crear la skill local git",
+                "Itera sobre las tablas hasta que de el usuario dé el visto bueno",
+                "Crea la skill local en la carpeta skills"
+            ]
+        }
+    ]
+}
