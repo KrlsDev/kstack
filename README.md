@@ -37,12 +37,12 @@ O manualmente: copia `skills/renfecito-mode/` a `~/.config/opencode/skills/` (gl
 
 Cuando este repositorio se actualiza, quienes lo tengan instalado reciben los cambios así:
 
-- **VS Code y Android Studio**: el cliente comprueba periódicamente si hay versión nueva y la aplica automáticamente (en VS Code, con la opción habitual de auto-actualización de extensiones activada). También puedes forzarlo manualmente: en VS Code, *Chat: Update Plugins* o el icono de refrescar en el editor de Customizations; en Android Studio, la acción de actualizar equivalente en la vista de plugins de Copilot. Los cambios se cargan en sesiones nuevas.
+- **VS Code**: con el auto-update de extensiones activado se aplica solo; manualmente con *Chat: Update Plugins* o el icono de refrescar en Plugins. Los cambios se cargan en sesiones nuevas.
+- **Android Studio**: comprobación manual desde la vista de plugins de Copilot (la acción de actualizar o reinstalando); los cambios se cargan en sesiones nuevas.
 - **OpenCode**: `gh skill update --all` (o repetir el `gh skill install`), y volver a descargar el worker con el `curl` de arriba.
 
 ## Mantenimiento (para el autor)
 
 - **Cambios en la skill**: edita solo `skills/renfecito-mode/` (copia única).
 - **Cambios en el worker**: el cuerpo (prompt) vive duplicado en `agents/worker.md` (OpenCode) y `com.github.copilot/agents/worker.agent.md` (Copilot) porque los formatos de agente no son portables; mantén los dos cuerpos sincronizados.
-- **Antes de cada push con cambios**: sube `version` en `plugin.json` y en `.github/plugin/marketplace.json` (a la vez, mismos valores). Es el mecanismo por el que los clientes detectan y aplican las actualizaciones a los usuarios.
-- El nombre del marketplace (`rstack`) es estable: los identificadores de plugin (`rstack@rstack`) dependen de él.
+- **Antes de cada push con cambios**: sube `version` en `plugin.json`. Es el mecanismo por el que los clientes detectan y aplican las actualizaciones a los usuarios.
