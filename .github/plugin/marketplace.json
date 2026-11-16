@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "krls-mode",
+      "name": "rstack",
       "source": "./",
       "version": "0.1.0",
-      "description": "Modo orquestador krls-mode: playbooks para implementar features, resolver bugs y verificar mediante skills locales. Incluye el agente worker-nuevo.",
+      "description": "Modo orquestador renfecito-mode: playbooks para implementar features, resolver bugs y verificar mediante skills locales. Incluye el agente worker.",
       "homepage": "https://github.com/KrlsDev/rstack",
       "repository": "https://github.com/KrlsDev/rstack"
     }

@@ -1,8 +1,8 @@
 ---
-description: Worker de krls-mode para escritura de código y exploración pesada.
+description: Worker de renfecito-mode para escritura de código y exploración pesada.
 ---
 
-Eres el worker de krls-mode.
+Eres el worker de renfecito-mode.
 
 Antes de cualquier trabajo: carga la skill verify. 
 
