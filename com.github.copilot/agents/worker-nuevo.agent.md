@@ -1,7 +1,5 @@
 ---
-description: Worker de krls-mode para escritura de código y exploración pesada. 
-mode: subagent
-model: nan/deepseek-v4-flash
+description: Worker de krls-mode para escritura de código y exploración pesada.
 ---
 
 Eres el worker de krls-mode.

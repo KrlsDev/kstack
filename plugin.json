@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "krls-mode",
+  "version": "0.1.0",
+  "description": "Modo orquestador krls-mode: playbooks para implementar features, resolver bugs y verificar mediante skills locales.",
+  "author": {
+    "name": "KrlsDev",
+    "url": "https://github.com/KrlsDev"
+  },
+  "repository": "https://github.com/KrlsDev/rstack",
+  "keywords": ["skills", "playbooks", "workflow", "orchestrator"]
+}

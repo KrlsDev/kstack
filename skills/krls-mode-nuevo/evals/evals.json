@@ -33,6 +33,15 @@
                 "Itera sobre las tablas hasta que de el usuario dé el visto bueno",
                 "Crea la skill local en la carpeta skills"
             ]
+        },
+        {
+            "id": "inincio-workers-secuencialmente-por-verify-no-realizable-en-paralelo",
+            "setup": "proyecto con verify en dispositivo físico que un mismo botón de la app dirige a la misma pantalla",
+            "query": "por qué el botón home y ajustes me redirigen a ajustes",
+            "expected_behavior": [
+                "Selecciona el playbook bug",
+                "Toma la decisión de lanzar los agentes secuencialmente por la limitación que supone hacer pruebas en un dispositivo físico"
+            ]
         }
     ]
 }
