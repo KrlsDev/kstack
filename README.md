@@ -2,6 +2,8 @@
 
 Stack de plugins para agentes de código: el modo orquestador **renfecito-mode** con sus playbooks y el agente **worker**, empaquetados como plugin portable ([Agent Plugins 1.0](https://agent-plugins.org/)).
 
+Inspirado en [pstack](https://github.com/backnotprop/pstack) de [poteto](https://github.com/poteto): el mismo patrón de un modo orquestador que lee tu petición, elige el playbook adecuado y lanza subagentes para el trabajo pesado con verificación basada en evidencia.
+
 ## Contenido
 
 | Componente | Ruta | Descripción |
@@ -20,29 +22,20 @@ Abre el diálogo **Plugins → Install Plugin from Source** (en VS Code: *Chat: 
 KrlsDev/rstack
 ```
 
-### OpenCode
+## Uso
 
-Con GitHub CLI 2.90+:
+Al empezar una tarea, indica al agente que use la skill **renfecito-mode**. Eso es todo: la skill decide qué playbook aplicar según lo que le pidas.
 
-```sh
-gh skill install KrlsDev/rstack renfecito-mode --agent opencode
-mkdir -p ~/.config/opencode/agents
-curl -fsSL https://raw.githubusercontent.com/KrlsDev/rstack/main/agents/worker.md \
-  -o ~/.config/opencode/agents/worker.md
+```
+usa renfecito-mode: añade un botón de ajustes en la pantalla principal
 ```
 
-O manualmente: copia `skills/renfecito-mode/` a `~/.config/opencode/skills/` (global) o `.opencode/skills/` (proyecto), y `agents/worker.md` a `~/.config/opencode/agents/` o `.opencode/agents/`.
+```
+usa renfecito-mode: el login se cuelga si el token ha expirado, investiga y arréglalo
+```
 
-## Actualizaciones
+- Pide una **feature** → ejecuta el playbook de features: investiga y delega el cambio en un subagente `worker`.
+- Reporta un **bug** → ejecuta el playbook de bugs: lanza workers para reproducir y localizar la causa, verifica las hipótesis con la skill local `verify` y luego delega la solución.
+- El orquestador **no modifica código**: siempre trabaja a través de subagentes y exige verificación real (evidencia de comandos, no un build en verde) antes de dar nada por hecho.
 
-Cuando este repositorio se actualiza, quienes lo tengan instalado reciben los cambios así:
-
-- **VS Code**: con el auto-update de extensiones activado se aplica solo; manualmente con *Chat: Update Plugins* o el icono de refrescar en Plugins. Los cambios se cargan en sesiones nuevas.
-- **Android Studio**: comprobación manual desde la vista de plugins de Copilot (la acción de actualizar o reinstalando); los cambios se cargan en sesiones nuevas.
-- **OpenCode**: `gh skill update --all` (o repetir el `gh skill install`), y volver a descargar el worker con el `curl` de arriba.
-
-## Mantenimiento (para el autor)
-
-- **Cambios en la skill**: edita solo `skills/renfecito-mode/` (copia única).
-- **Cambios en el worker**: el cuerpo (prompt) vive duplicado en `agents/worker.md` (OpenCode) y `com.github.copilot/agents/worker.agent.md` (Copilot) porque los formatos de agente no son portables; mantén los dos cuerpos sincronizados.
-- **Antes de cada push con cambios**: sube `version` en `plugin.json`. Es el mecanismo por el que los clientes detectan y aplican las actualizaciones a los usuarios.
+En OpenCode también puedes invocarla directamente con `@renfecito-mode` al principio del prompt.
