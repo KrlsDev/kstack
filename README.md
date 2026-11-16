@@ -2,8 +2,6 @@
 
 Stack de plugins para agentes de código: el modo orquestador **renfecito-mode** con sus playbooks y el agente **worker**, empaquetados como plugin portable ([Agent Plugins 1.0](https://agent-plugins.org/)).
 
-Este repositorio es a la vez **plugin** y **marketplace**: la raíz es el plugin (con `plugin.json`) y `.github/plugin/marketplace.json` es el catálogo que lo lista.
-
 ## Contenido
 
 | Componente | Ruta | Descripción |
@@ -14,31 +12,13 @@ Este repositorio es a la vez **plugin** y **marketplace**: la raíz es el plugin
 
 ## Instalación
 
-### Android Studio y VS Code ("Plugin from Source")
+### Visual Studio Code y Android Studio (misma forma en los dos)
 
-Abre el diálogo de instalación de plugin desde fuente y teclea:
+Abre el diálogo **Plugins → Install Plugin from Source** (en VS Code: *Chat: Install Plugin from Source*) y teclea:
 
 ```
 KrlsDev/rstack
 ```
-
-### VS Code (marketplace)
-
-Añade en Settings:
-
-```json
-"chat.plugins.marketplaces": ["KrlsDev/rstack"]
-```
-
-o en el chat de Copilot: `/plugin marketplace add KrlsDev/rstack` y luego `/plugin install rstack@rstack`.
-
-### GitHub Copilot CLI
-
-```
-copilot plugin install KrlsDev/rstack
-```
-
-o vía marketplace: `copilot plugin marketplace add KrlsDev/rstack` + `copilot plugin install rstack@rstack`.
 
 ### OpenCode
 
@@ -53,27 +33,16 @@ curl -fsSL https://raw.githubusercontent.com/KrlsDev/rstack/main/agents/worker.m
 
 O manualmente: copia `skills/renfecito-mode/` a `~/.config/opencode/skills/` (global) o `.opencode/skills/` (proyecto), y `agents/worker.md` a `~/.config/opencode/agents/` o `.opencode/agents/`.
 
-### Android Studio (solo skill, sin plugin)
+## Actualizaciones
 
-```sh
-gh skill install KrlsDev/rstack renfecito-mode
-```
+Cuando este repositorio se actualiza, quienes lo tengan instalado reciben los cambios así:
 
-Activa Agent Skills en Settings → GitHub Copilot → Chat → Agent (public preview).
+- **VS Code y Android Studio**: el cliente comprueba periódicamente si hay versión nueva y la aplica automáticamente (en VS Code, con la opción habitual de auto-actualización de extensiones activada). También puedes forzarlo manualmente: en VS Code, *Chat: Update Plugins* o el icono de refrescar en el editor de Customizations; en Android Studio, la acción de actualizar equivalente en la vista de plugins de Copilot. Los cambios se cargan en sesiones nuevas.
+- **OpenCode**: `gh skill update --all` (o repetir el `gh skill install`), y volver a descargar el worker con el `curl` de arriba.
 
-## Estructura
+## Mantenimiento (para el autor)
 
-```
-plugin.json                      ← manifiesto del plugin "rstack" (Agent Plugins 1.0); la raíz ES el plugin
-skills/renfecito-mode/           ← skill portable (SKILL.md + playbooks + evals)
-com.github.copilot/
-└── agents/worker.agent.md       ← agente específico de Copilot
-agents/worker.md                 ← agente específico de OpenCode
-.github/plugin/marketplace.json  ← catálogo del marketplace "rstack"
-```
-
-## Mantenimiento
-
-- **Cambios en la skill**: edita solo `skills/renfecito-mode/` (copia única) y sube `version` en `plugin.json` y `marketplace.json` a la vez.
+- **Cambios en la skill**: edita solo `skills/renfecito-mode/` (copia única).
 - **Cambios en el worker**: el cuerpo (prompt) vive duplicado en `agents/worker.md` (OpenCode) y `com.github.copilot/agents/worker.agent.md` (Copilot) porque los formatos de agente no son portables; mantén los dos cuerpos sincronizados.
+- **Antes de cada push con cambios**: sube `version` en `plugin.json` y en `.github/plugin/marketplace.json` (a la vez, mismos valores). Es el mecanismo por el que los clientes detectan y aplican las actualizaciones a los usuarios.
 - El nombre del marketplace (`rstack`) es estable: los identificadores de plugin (`rstack@rstack`) dependen de él.
