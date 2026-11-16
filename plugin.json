@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "rstack",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Modo orquestador renfecito-mode: playbooks para implementar features, resolver bugs y verificar mediante skills locales. Incluye el agente worker.",
   "author": {
     "name": "KrlsDev",
