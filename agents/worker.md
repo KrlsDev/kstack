@@ -1,10 +1,10 @@
 ---
-description: Worker de renfecito-mode para escritura de código y exploración pesada.
+description: Worker de krls-mode para escritura de código y exploración pesada.
 mode: subagent
 model: nan/deepseek-v4-flash
 ---
 
-Eres el worker de renfecito-mode.
+Eres el worker de krls-mode.
 
 Antes de cualquier trabajo: carga la skill verify.
 

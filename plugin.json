@@ -1,12 +1,12 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "rstack",
+  "name": "kstack",
   "version": "0.2.1",
-  "description": "Modo orquestador renfecito-mode: playbooks para implementar features, resolver bugs y verificar mediante skills locales. Incluye el agente worker.",
+  "description": "Modo orquestador krls-mode: playbooks para implementar features, resolver bugs y verificar mediante skills locales. Incluye el agente worker.",
   "author": {
     "name": "KrlsDev",
     "url": "https://github.com/KrlsDev"
   },
-  "repository": "https://github.com/KrlsDev/rstack",
+  "repository": "https://github.com/KrlsDev/kstack",
   "keywords": ["skills", "playbooks", "workflow", "orchestrator"]
 }
